@@ -1,10 +1,24 @@
 # HomePrep Android
 
+**Your preparedness. Your server. Your data.**
+
 HomePrep Android is the planned mobile client for the HomePrep ecosystem.
 
 The app is intended to connect to a user's own **HomePrep Server** rather than depend on a central HomePrep cloud account.
 
 HomePrep Android is currently in the planning/bootstrap phase. No production app is available yet.
+
+## A permanent data-ownership commitment
+
+HomePrep Android will not require centralized HomePrep-operated storage for core private household preparedness data.
+
+The normal architecture is deliberately simple: **the server belongs to the user; the app is a client.**
+
+Self-hosted support is not intended as a temporary bridge to a mandatory cloud product. Future optional hosted services may exist, but they must remain optional and must not remove the user's ability to use HomePrep with infrastructure they control.
+
+> **Convenience may be centralized. Ownership must not be.**
+
+Read the full client commitment in [DATA-OWNERSHIP.md](DATA-OWNERSHIP.md).
 
 ## Product direction
 
@@ -23,7 +37,7 @@ HomePrep Server
       +-- HomePrep Web
 ```
 
-The server belongs to the user. The app is a client.
+The connected server should always be visible to the user. HomePrep Android should not silently redirect household preparedness data to HomePrep-operated infrastructure.
 
 ## Planned capabilities
 
@@ -52,7 +66,20 @@ The exact security and pairing contract will be defined in HomePrep Server befor
 
 HomePrep Android should support servers on the user's local network and user-controlled remote access.
 
-HomePrep does not currently plan to require a central relay or HomePrep cloud service. Remote connectivity may initially rely on a secure endpoint configured by the server owner, such as VPN or HTTPS reverse proxy access.
+HomePrep does not plan to require a central relay or HomePrep cloud service for core use. Remote connectivity may initially rely on a secure endpoint configured by the server owner, such as VPN or HTTPS reverse proxy access.
+
+Local-network-only operation should remain possible for users who intentionally do not want their preparedness system reachable from the public internet.
+
+## Privacy-oriented client behaviour
+
+The Android client should:
+
+- use secure OS-backed storage for device credentials
+- clearly identify the connected HomePrep Server
+- make sync/offline state visible
+- minimize locally cached data to what is useful for the app
+- avoid mandatory telemetry for core operation
+- never require a HomePrep account merely to connect to a self-hosted server
 
 ## Relationship to other repositories
 
@@ -66,7 +93,7 @@ The Android app will deliberately follow the server API contract instead of inve
 
 The repository exists now so the Android product track has its own roadmap and history, but implementation should wait until the first HomePrep Server API and pairing model are stable enough to build against.
 
-See [ROADMAP.md](ROADMAP.md) and [CHANGELOG.md](CHANGELOG.md).
+See [ROADMAP.md](ROADMAP.md), [DATA-OWNERSHIP.md](DATA-OWNERSHIP.md) and [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 
