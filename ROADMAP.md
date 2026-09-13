@@ -4,6 +4,18 @@ HomePrep Android is the mobile client for the HomePrep ecosystem. It will connec
 
 This roadmap is directional and may change as HomePrep Server matures.
 
+## Permanent product principle
+
+**Your preparedness. Your server. Your data.**
+
+Core private household preparedness data will not require centralized HomePrep-operated storage.
+
+The Android app is a client of infrastructure selected and controlled by the user. Future optional hosted services may exist, but self-hosted operation must remain supported and first-class.
+
+> **Convenience may be centralized. Ownership must not be.**
+
+See [DATA-OWNERSHIP.md](DATA-OWNERSHIP.md).
+
 ## Dependency
 
 Android development intentionally follows HomePrep Server rather than running ahead of it. The app should not invent protocol, sync or authentication behaviour that the server has not standardized.
@@ -15,6 +27,7 @@ Android development intentionally follows HomePrep Server rather than running ah
 - Define secure local storage for server credentials/tokens.
 - Implement server URL configuration and connectivity checks.
 - Implement the first API client generated or aligned from the HomePrep Server contract.
+- Make server identity visible in the client from the beginning.
 
 ## Phase 2 — Pairing and authentication
 
@@ -23,6 +36,7 @@ Android development intentionally follows HomePrep Server rather than running ah
 - Store per-device credentials securely.
 - Support logout/revoke/re-pair flows.
 - Display server identity and connection status clearly.
+- Require no central HomePrep account for self-hosted pairing.
 
 ## Phase 3 — Read-only HomePrep client
 
@@ -53,11 +67,12 @@ This phase proves the full Server → Android data path before write operations 
 - Clear stale/offline indicators.
 - Queue safe offline operations where the sync contract supports them.
 - Conflict presentation when an automatic resolution would be unsafe or confusing.
+- Keep offline storage understandable and subordinate to the user's selected server rather than becoming an opaque second data silo.
 
 ## Phase 6 — Mobile-native features
 
 - Optional notifications driven by HomePrep Server capabilities.
-- Camera/image workflows once the shared media model is ready.
+- Camera/image workflows only after the shared media/privacy model is ready.
 - Barcode/QR-assisted workflows where useful.
 - Home-screen shortcuts/widgets if they add practical value.
 
@@ -69,9 +84,17 @@ This phase proves the full Server → Android data path before write operations 
 - Tablet/layout support where useful.
 - Production release process and store distribution decisions.
 
+## Non-negotiable client constraints
+
+- No mandatory HomePrep-operated cloud account.
+- No mandatory central HomePrep data store.
+- No hidden redirection of private household data to HomePrep infrastructure.
+- No mandatory telemetry for core operation.
+- Self-hosted local-network use must remain possible.
+- The user must be able to identify which server the app is connected to.
+
 ## Non-goals for the first releases
 
-- Requiring a HomePrep-operated cloud account.
 - Maintaining a separate mobile-only HomePrep database model.
 - Building social/community or messaging features into the preparedness client.
 - Hiding sync/server status from the user.
